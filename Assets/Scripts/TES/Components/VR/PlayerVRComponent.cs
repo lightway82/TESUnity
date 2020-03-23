@@ -76,8 +76,8 @@ namespace TESUnity.Components.VR
 
         void Awake()
         {
-            UnityEngine.VR.InputTracking.GetLocalPosition(VRNode.CenterEye);
-            if (VRSettings.enabled)
+            UnityEngine.XR.InputTracking.GetLocalPosition(UnityEngine.XR.XRNode.CenterEye);
+            if (UnityEngine.XR.XRSettings.enabled)
                 _vrVendor = VRVendor.UnityVR;
 #if OSVR
             var clientKitGO = new GameObject("ClientKit");
@@ -201,7 +201,7 @@ namespace TESUnity.Components.VR
             yield return new WaitForSeconds(delay);
 
             if (_vrVendor == VRVendor.UnityVR)
-                InputTracking.Recenter();
+                UnityEngine.XR.InputTracking.Recenter();
 
 #if OSVR
             if (_vrVendor == VRVendor.OSVR)
